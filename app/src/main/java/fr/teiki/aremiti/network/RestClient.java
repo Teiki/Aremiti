@@ -59,10 +59,7 @@ public class RestClient {
 			RequestParams params = new RequestParams();
 
 			if (date != null){
-				String pattern = "yyyy-MM-dd";
-				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.US);
-
-				params.put("date_debut",simpleDateFormat.format(date));
+				params.put("date_debut",Utils.getSimpleDateFormat(date));
 			}
 
 			this.client.addHeader("Accept", "application/json");

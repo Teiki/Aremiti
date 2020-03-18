@@ -6,6 +6,10 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import fr.teiki.aremiti.R;
 
 /**
@@ -37,5 +41,11 @@ public class Utils {
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();
 		return alertDialog;
+	}
+
+	public static String getSimpleDateFormat(Date date) {
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.US);
+		return simpleDateFormat.format(date);
 	}
 }

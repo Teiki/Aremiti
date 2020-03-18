@@ -15,7 +15,7 @@ import fr.teiki.aremiti.parser.MyScheduleParser;
 
 public class APITalker {
 
-	public void getSchedule(final Context context, final Date date, final MyScheduleParser.MyScheduleParserDelegate delegate){
+	public static void getSchedule(final Context context, final Date date, final MyScheduleParser.MyScheduleParserDelegate delegate){
 		RestClient restClient = new RestClient(context);
 		restClient.startRequest("GET","aremiti/horaires", date, new JsonResponseHandler() {
 			@Override

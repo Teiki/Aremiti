@@ -3,4 +3,14 @@
     <string name="title_home">Accueil</string>
     <string name="title_magazine">Magazine</string>
     <string name="title_news">Actualités</string>
+
+    <string name="ok">OK</string>
+    <string name="modify">Modifier</string>
+    <string name="warning">Attention</string>
+    <string name="error">Erreur</string>
+    <string name="loading">Chargement&#8230;</string>
+    <string name="back">Retour</string>
+    <string name="confirm">Confirmer</string>
+    <string name="cancel">Annuler</string>
+    <string name="check_network">Vérifiez votre connexion internet.</string>
 </resources>

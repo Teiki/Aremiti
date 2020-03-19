@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,9 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import fr.teiki.aremiti.R;
-import fr.teiki.aremiti.holder.AremitiPath;
 import fr.teiki.aremiti.holder.PriceHolder;
-import fr.teiki.aremiti.holder.ScheduleOfOneDay;
 
 /**
  * Created by Antoine GALTIER on 19/03/2020.
@@ -76,7 +73,7 @@ public class PriceListAdapter extends BaseAdapter {
 		txt_type_article.setText(currentItem.getType_article());
 		txt_designation.setText(currentItem.getDesignation());
 		txt_price.setText("A/S "+ String.valueOf(currentItem.getPrice())+" XPF");
-		txt_price.setText("A/R "+String.valueOf(currentItem.getPrice()*2)+" XPF");
+		txt_double_price.setText("A/R "+String.valueOf(currentItem.getPrice()*2)+" XPF");
 
 		// returns the view for the current row
 		return convertView;

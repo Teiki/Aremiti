@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
+import fr.teiki.aremiti.parser.MyPricesParser;
 import fr.teiki.aremiti.parser.MyScheduleParser;
 
 /**
@@ -23,6 +24,28 @@ public class APITalker {
 				JSONObject response = (JSONObject) rawResponse;
 				MyScheduleParser myScheduleParser = new MyScheduleParser(context, response, delegate);
 				myScheduleParser.execute();
+			}
+
+			@Override
+			public void onFailure(int statusCode, Header[] headers, Object errorResponse) {
+
+			}
+
+			@Override
+			public void onProgress(long bytesWritten, long totalSize) {
+
+			}
+		});
+	}
+
+	public static void getPrices(final Context context, final MyPricesParser.MyPricesParserDelegate delegate) {
+		RestClient restClient = new RestClient(context);
+		restClient.startRequest("GET","aremiti/tarifs", new JsonResponseHandler() {
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, Object rawResponse) {
+				JSONObject response = (JSONObject) rawResponse;
+				MyPricesParser myPricesParser = new MyPricesParser(context, response, delegate);
+				myPricesParser.execute();
 			}
 
 			@Override

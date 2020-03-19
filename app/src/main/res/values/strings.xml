@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Aremiti</string>
-    <string name="title_home">Accueil</string>
-    <string name="title_magazine">Magazine</string>
-    <string name="title_news">Actualités</string>
+    <string name="title_home">Trajets</string>
+    <string name="title_magazine">Prix</string>
+    <string name="title_news">WIP</string>
 
     <string name="ok">OK</string>
     <string name="modify">Modifier</string>

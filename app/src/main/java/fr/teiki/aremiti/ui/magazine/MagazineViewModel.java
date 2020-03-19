@@ -4,16 +4,18 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+
+import fr.teiki.aremiti.holder.PriceHolder;
+
 public class MagazineViewModel extends ViewModel {
 
-	private MutableLiveData<String> mText;
+
+	private ArrayList<PriceHolder> priceHolders;
 
 	public MagazineViewModel() {
-		mText = new MutableLiveData<>();
-		mText.setValue("This is dashboard fragment");
+
 	}
 
-	public LiveData<String> getText() {
-		return mText;
-	}
+
 }

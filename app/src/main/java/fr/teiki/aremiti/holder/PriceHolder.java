@@ -6,6 +6,9 @@ package fr.teiki.aremiti.holder;
 
 public class PriceHolder {
 
+	public static final String TAG_DESIGNATION = "designation";
+	public static final String TAG_MONTANT = "montant_ttc";
+	public static final String TAG_TYPE_ARTICLE = "type_article";
 
 	private String designation;
 	private String type_article;

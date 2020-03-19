@@ -15,6 +15,8 @@ public class ScheduleOfOneDay {
 
 	public ScheduleOfOneDay(Date date) {
 		this.date = date;
+		from_tahiti = new ArrayList<>();
+		from_moorea = new ArrayList<>();
 	}
 
 	public ArrayList<AremitiPath> getFrom_tahiti() {

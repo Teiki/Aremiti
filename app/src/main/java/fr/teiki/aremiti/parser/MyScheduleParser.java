@@ -46,9 +46,9 @@ public class MyScheduleParser extends AsyncTask<Void, Void, ScheduleOfOneDay> {
 						while (iter_departure.hasNext()) {
 							String key_departure = iter_departure.next();
 							if ("T".equals(key_departure)) {
-								scheduleOfOneDay.setFrom_tahiti(getAremitiPathList(date, jsonObject_departure.getJSONObject(key_departure)));
+								setAremitiPathList(scheduleOfOneDay.getFrom_tahiti(), date, jsonObject_departure.getJSONObject(key_departure));
 							} else if ("M".equals(key_departure)) {
-								scheduleOfOneDay.setFrom_moorea(getAremitiPathList(date, jsonObject_departure.getJSONObject(key_departure)));
+								setAremitiPathList(scheduleOfOneDay.getFrom_moorea(), date, jsonObject_departure.getJSONObject(key_departure));
 							}
 						}
 					} catch (JSONException e) {
@@ -62,8 +62,7 @@ public class MyScheduleParser extends AsyncTask<Void, Void, ScheduleOfOneDay> {
 		return scheduleOfOneDay;
 	}
 
-	private ArrayList<AremitiPath> getAremitiPathList(Date date, JSONObject jsonObject_hours) throws JSONException {
-		ArrayList<AremitiPath> aremitiPathList = new ArrayList<>();
+	private ArrayList<AremitiPath> setAremitiPathList(ArrayList<AremitiPath> aremitiPathList, Date date, JSONObject jsonObject_hours) throws JSONException {
 		Iterator<String> iter_times = jsonObject_hours.keys();
 		while (iter_times.hasNext()) {
 			String key_time = iter_times.next();

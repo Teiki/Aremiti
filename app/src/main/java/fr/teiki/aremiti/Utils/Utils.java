@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -59,5 +60,11 @@ public class Utils {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static String getDepartureTime(Date date){
+		String pattern = "hh:mm";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.US);
+		return simpleDateFormat.format(date);
 	}
 }

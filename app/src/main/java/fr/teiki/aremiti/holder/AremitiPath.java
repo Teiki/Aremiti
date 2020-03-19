@@ -2,6 +2,8 @@ package fr.teiki.aremiti.holder;
 
 import java.util.Date;
 
+import fr.teiki.aremiti.Utils.Utils;
+
 /**
  * Created by Antoine GALTIER on 17/03/2020.
  */
@@ -14,6 +16,8 @@ public class AremitiPath {
 
 	public static String TAG_CODE_SOCIETE = "code_societe";
 	public static String TAG_PLACE_DISPO = "place_dispo";
+	public static String TAG_AREMITI6 = "CATAM";
+	public static String TAG_AREMITI_FERRY = "FERRY";
 
 
 
@@ -39,6 +43,22 @@ public class AremitiPath {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public String getName() {
+		if (TAG_AREMITI6.equals(code_societe)) {
+			return "Aremiti 6";
+		} else if (TAG_AREMITI_FERRY.equals(code_societe)) {
+			return "Aremiti Ferry 2";
+		}
+		return "nouveau bateau";
+	}
+
+	public String getDepartureTime() {
+		if (date != null){
+			return Utils.getDepartureTime(date);
+		}
+		return "??";
 	}
 }
 

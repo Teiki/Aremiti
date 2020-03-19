@@ -87,7 +87,7 @@ public class PathListAdapter extends BaseAdapter {
 		Collections.sort(scheduleOfOneDay.getFrom_moorea(), new CustomComparator());
 	}
 
-	public static class CustomComparator implements Comparator<AremitiPath> {
+	private static class CustomComparator implements Comparator<AremitiPath> {
 		@Override
 		public int compare(AremitiPath o1, AremitiPath o2) {
 			return o1.getDate().compareTo(o2.getDate());

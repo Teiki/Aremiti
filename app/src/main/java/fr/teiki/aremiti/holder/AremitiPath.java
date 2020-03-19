@@ -30,7 +30,12 @@ public class AremitiPath {
 	}
 
 	public int getPlace_dispo() {
-		return place_dispo;
+		//Avoid to show impossible number of available car places
+		if (place_dispo >= 0) {
+			return place_dispo;
+		} else {
+			return 0;
+		}
 	}
 
 	public void setPlace_dispo(int place_dispo) {

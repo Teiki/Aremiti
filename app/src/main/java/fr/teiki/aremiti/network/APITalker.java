@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
+import fr.teiki.aremiti.parser.MyNewsParser;
 import fr.teiki.aremiti.parser.MyPricesParser;
 import fr.teiki.aremiti.parser.MyScheduleParser;
 
@@ -46,6 +47,28 @@ public class APITalker {
 				JSONObject response = (JSONObject) rawResponse;
 				MyPricesParser myPricesParser = new MyPricesParser(context, response, delegate);
 				myPricesParser.execute();
+			}
+
+			@Override
+			public void onFailure(int statusCode, Header[] headers, Object errorResponse) {
+
+			}
+
+			@Override
+			public void onProgress(long bytesWritten, long totalSize) {
+
+			}
+		});
+	}
+
+	public static void getNews(final Context context, final MyNewsParser.MyNewsParserDelegate delegate) {
+		RestClient restClient = new RestClient(context);
+		restClient.startRequest("GET","aremiti/news/10/0", new JsonResponseHandler() {
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, Object rawResponse) {
+				JSONObject response = (JSONObject) rawResponse;
+				MyNewsParser myNewsParser = new MyNewsParser(response, delegate);
+				myNewsParser.execute();
 			}
 
 			@Override

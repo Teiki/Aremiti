@@ -3,6 +3,7 @@ package fr.teiki.aremiti.Utils;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -51,6 +52,12 @@ public class Utils {
 		return simpleDateFormat.format(date);
 	}
 
+	public static String getSimpleDateLabel(Date date) {
+		String pattern = "dd-MM-yyyy";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.FRANCE);
+		return simpleDateFormat.format(date);
+	}
+
 	public static Date getDate(String date) {
 		String pattern = "yyyy-MM-dd";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.US);
@@ -66,5 +73,9 @@ public class Utils {
 		String pattern = "hh:mm a";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.US);
 		return simpleDateFormat.format(date);
+	}
+
+	public static Bitmap downloadImage(String imageURL) {
+		return null;
 	}
 }

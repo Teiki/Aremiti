@@ -40,7 +40,7 @@ import fr.teiki.aremiti.Utils.Utils;
 
 public class RestClient {
 
-	private String baseUrl = "https://api.aremiti.net:31420/rest-api/";
+	public static String baseUrl = "https://api.aremiti.net:31420/rest-api/";
 	private AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
 	private Context context;
 

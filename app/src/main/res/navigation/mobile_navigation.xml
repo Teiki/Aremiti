@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="fr.teiki.aremiti.ui.magazine.MagazineFragment"
+        android:name="fr.teiki.aremiti.ui.prices.PriceFragment"
         android:label="@string/title_magazine"
         tools:layout="@layout/fragment_magazine" />
 

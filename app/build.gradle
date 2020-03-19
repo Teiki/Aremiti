@@ -42,4 +42,8 @@ dependencies {
 
     //Http Async Client
     implementation 'com.loopj.android:android-async-http:1.4.9'
+
+    //Download aimage and handle cache
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    
 }

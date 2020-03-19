@@ -1,5 +1,7 @@
 package fr.teiki.aremiti.holder;
 
+import java.util.Date;
+
 /**
  * Created by Antoine GALTIER on 17/03/2020.
  */
@@ -8,12 +10,11 @@ public class AremitiPath {
 
 	private String code_societe;
 	private int place_dispo;
+	private Date date;
 
+	public static String TAG_CODE_SOCIETE = "code_societe";
+	public static String TAG_PLACE_DISPO = "place_dispo";
 
-	public AremitiPath(String code_societe, int place_dispo) {
-		this.code_societe = code_societe;
-		this.place_dispo = place_dispo;
-	}
 
 
 	public String getCode_societe() {
@@ -31,4 +32,13 @@ public class AremitiPath {
 	public void setPlace_dispo(int place_dispo) {
 		this.place_dispo = place_dispo;
 	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 }
+

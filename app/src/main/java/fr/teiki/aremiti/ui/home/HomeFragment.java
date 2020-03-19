@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment {
 				textView.setText(s);
 			}
 		});
+		refreshData();
 		return root;
 	}
 

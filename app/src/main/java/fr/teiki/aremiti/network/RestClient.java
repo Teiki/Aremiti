@@ -11,9 +11,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.Date;
-import java.util.Locale;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import cz.msebera.android.httpclient.Header;
 import fr.teiki.aremiti.R;
@@ -26,7 +41,7 @@ import fr.teiki.aremiti.Utils.Utils;
 public class RestClient {
 
 	private String baseUrl = "https://api.aremiti.net:31420/rest-api/";
-	private AsyncHttpClient client = new AsyncHttpClient();
+	private AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
 	private Context context;
 
 
@@ -73,10 +88,60 @@ public class RestClient {
 
 			if ("GET".equals(verb)) {
 				this.client.addHeader("content-type", "application/json;charset=UTF-8");
+
+//				try {
+//					KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+//					trustStore.load(null, null);
+//					MySSLSocketFactory sf = new MySSLSocketFactory(trustStore);
+//					sf.setHostnameVerifier(MySSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+//					client.setSSLSocketFactory(sf);
+//				}
+//				catch (Exception e) {
+//				}
+
+
 				this.client.get(urlComplet, params, new InternalJsonResponseHandler(responseHandler));
 			}
 		}
 	}
+
+
+//	class MySSLSocketFactory extends SSLSocketFactory {
+//		SSLContext sslContext = SSLContext.getInstance("TLS");
+//
+//		public MySSLSocketFactory(KeyStore truststore) throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException, UnrecoverableKeyException {
+//			super();
+//
+//			TrustManager tm = new X509TrustManager() {
+//				public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+//				}
+//
+//				public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+//				}
+//
+//				public X509Certificate[] getAcceptedIssuers() {
+//					return null;
+//				}
+//			};
+//
+//			sslContext.init(null, new TrustManager[]{tm}, null);
+//		}
+//
+//		@Override
+//		public String[] getDefaultCipherSuites() {
+//			return new String[0];
+//		}
+//
+//		@Override
+//		public Socket createSocket(Socket socket, String host, int port, boolean autoClose) throws IOException, UnknownHostException {
+//			return sslContext.getSocketFactory().createSocket(socket, host, port, autoClose);
+//		}
+//
+//		@Override
+//		public Socket createSocket() throws IOException {
+//			return sslContext.getSocketFactory().createSocket();
+//		}
+//	}
 
 	private class InternalJsonResponseHandler extends JsonHttpResponseHandler {
 

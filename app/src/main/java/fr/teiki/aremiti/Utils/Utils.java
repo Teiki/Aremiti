@@ -63,7 +63,7 @@ public class Utils {
 	}
 
 	public static String getDepartureTime(Date date){
-		String pattern = "hh:mm";
+		String pattern = "hh:mm a";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, Locale.US);
 		return simpleDateFormat.format(date);
 	}

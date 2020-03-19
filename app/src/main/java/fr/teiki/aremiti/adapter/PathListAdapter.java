@@ -9,6 +9,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import fr.teiki.aremiti.R;
 import fr.teiki.aremiti.holder.AremitiPath;
@@ -28,8 +30,9 @@ public class PathListAdapter extends BaseAdapter {
 		this.context = context;
 		this.scheduleOfOneDay = scheduleOfOneDay;
 		this.radioGroup = radioGroup;
+		sortList();
 	}
-	
+
 	private ArrayList<AremitiPath> getListToDisplay(){
 		if (radioGroup.getCheckedRadioButtonId() == R.id.radio_button_tahiti){
 			return  scheduleOfOneDay.getFrom_tahiti();
@@ -77,5 +80,17 @@ public class PathListAdapter extends BaseAdapter {
 
 		// returns the view for the current row
 		return convertView;
+	}
+
+	private void sortList() {
+		Collections.sort(scheduleOfOneDay.getFrom_tahiti(), new CustomComparator());
+		Collections.sort(scheduleOfOneDay.getFrom_moorea(), new CustomComparator());
+	}
+
+	public static class CustomComparator implements Comparator<AremitiPath> {
+		@Override
+		public int compare(AremitiPath o1, AremitiPath o2) {
+			return o1.getDate().compareTo(o2.getDate());
+		}
 	}
 }

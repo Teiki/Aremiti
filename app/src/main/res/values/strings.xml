@@ -13,4 +13,5 @@
     <string name="confirm">Confirmer</string>
     <string name="cancel">Annuler</string>
     <string name="check_network">Vérifiez votre connexion internet.</string>
+    <string name="available_car_label">Nombre de places pour véhicules disponible :</string>
 </resources>

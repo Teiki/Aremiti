@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre de places de véhicules disponible:"/>
+            android:text="@string/available_car_label"/>
 
         <TextView
             android:id="@+id/text_view_free_space"

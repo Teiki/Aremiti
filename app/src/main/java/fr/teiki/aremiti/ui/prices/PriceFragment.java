@@ -37,6 +37,7 @@ public class PriceFragment extends Fragment {
 	}
 
 	private void getData() {
+		//Get data from Web API, parse it
 		APITalker.getPrices(getContext(), new MyPricesParser.MyPricesParserDelegate() {
 			@Override
 			public void onPricesParsed(ArrayList<PriceHolder> holderArrayList) {

@@ -33,6 +33,11 @@ public class PathListAdapter extends BaseAdapter {
 		sortList();
 	}
 
+	public void setScheduleOfOneDay(ScheduleOfOneDay scheduleOfOneDay) {
+		this.scheduleOfOneDay = scheduleOfOneDay;
+		sortList();
+	}
+
 	private ArrayList<AremitiPath> getListToDisplay(){
 		if (radioGroup.getCheckedRadioButtonId() == R.id.radio_button_tahiti){
 			return  scheduleOfOneDay.getFrom_tahiti();

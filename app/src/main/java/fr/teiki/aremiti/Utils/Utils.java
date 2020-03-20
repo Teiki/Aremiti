@@ -1,11 +1,13 @@
 package fr.teiki.aremiti.Utils;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.widget.DatePicker;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,6 +22,18 @@ import fr.teiki.aremiti.R;
  */
 
 public class Utils {
+
+	public static void displayCalendarDialog(Context context, Date initial_date, DatePickerDialog.OnDateSetListener listener){
+		Calendar c = Calendar.getInstance();
+		c.setTime(initial_date);
+		int mYear = c.get(Calendar.YEAR);
+		int mMonth = c.get(Calendar.MONTH);
+		int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+		DatePickerDialog datePickerDialog = new DatePickerDialog(context, listener, mYear, mMonth, mDay);
+		datePickerDialog.show();
+	}
 
 	public static boolean isNetworkAvailable(Context context) {
 		if (context == null)

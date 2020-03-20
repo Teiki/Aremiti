@@ -12,14 +12,19 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 import fr.teiki.aremiti.R;
+import fr.teiki.aremiti.Utils.PicassoTrustAll;
 import fr.teiki.aremiti.Utils.Utils;
 import fr.teiki.aremiti.holder.NewsHolder;
 import fr.teiki.aremiti.holder.PriceHolder;
+import fr.teiki.aremiti.network.DownloadImagesTask;
 import okhttp3.internal.Util;
 
 /**
@@ -70,7 +75,17 @@ public class NewsAdapter extends BaseAdapter {
 		TextView description = convertView.findViewById(R.id.description);
 		TextView infos = convertView.findViewById(R.id.infos);
 
-		Picasso.get().load(currentItem.getImageURL()).into(image);
+		try {
+			PicassoTrustAll.getPicassso(context).get().load(currentItem.getImageURL()).into(image);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (KeyStoreException e) {
+			e.printStackTrace();
+		} catch (KeyManagementException e) {
+			e.printStackTrace();
+		}
+		//DownloadImagesTask downloadImagesTask = new DownloadImagesTask(image);
+		//downloadImagesTask.execute(currentItem.getImageURL());
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 			description.setText(Html.fromHtml(currentItem.getArticle(),Html.FROM_HTML_MODE_COMPACT));
 		} else {
@@ -91,7 +106,7 @@ public class NewsAdapter extends BaseAdapter {
 	private static class CustomComparator implements Comparator<NewsHolder> {
 		@Override
 		public int compare(NewsHolder o1, NewsHolder o2) {
-			return o1.getDate().compareTo(o2.getDate());
+			return o2.getDate().compareTo(o1.getDate());
 		}
 	}
 }
